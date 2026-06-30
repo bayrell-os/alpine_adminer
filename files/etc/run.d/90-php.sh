@@ -20,7 +20,7 @@ start_server() {
     echo "Starting PHP server on $HOST:$PORT from $DOCROOT..."
     
     # Start PHP server in background
-    php84 -S "$HOST:$PORT" -t "$DOCROOT" >> "$LOG_FILE" 2>&1 &
+    php84 -q -S "$HOST:$PORT" -t "$DOCROOT" >> "$LOG_FILE" 2>&1 &
     
     # Store PID
     echo $! > "$PID_FILE"

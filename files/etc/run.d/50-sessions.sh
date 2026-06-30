@@ -1,2 +1,2 @@
-mkdir -p /tmp/sessions
-chmod 777 /tmp/sessions
+mkdir -p /data/sessions
+chmod 777 /data/sessions
