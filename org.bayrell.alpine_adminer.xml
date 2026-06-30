@@ -2,7 +2,7 @@
 <template>
 	<uid>org.bayrell.alpine_adminer</uid>
 	<name>Adminer</name>
-	<version>4.8.1-2</version>
+	<version>5.4.2</version>
 	<maintainer>Ildar &lt;ildar@bayrell.org&gt;</maintainer>
 	<marketplace>https://cloud.bayrell.org/</marketplace>
 	<link name="Docker hub">https://hub.docker.com/r/bayrell/alpine_adminer</link>
@@ -16,7 +16,7 @@
 	<yaml>
 		<services>
 			<_var_app_name_>
-				<image>bayrell/alpine_adminer:4.8.1-2</image>
+				<image>bayrell/alpine_adminer:5.4.2</image>
 				<hostname>{{.Service.Name}}.{{.Task.ID}}.local</hostname>
 				<environment>
 					<MYSQL_HOST>_var_mysql_host_</MYSQL_HOST>

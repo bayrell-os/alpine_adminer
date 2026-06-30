@@ -1,15 +1,20 @@
 ARG ARCH=
-FROM docker.io/bayrell/alpine_php_fpm:7.4${ARCH}
-	
+FROM ${ARCH}php:8.4-alpine
+
 RUN cd ~; \
 	apk update; \
-	apk add php7-pdo_pgsql; \
+	apk upgrade; \
+	apk add bash mc nano wget procps net-tools; \
+	apk add php84 php84-session php84-pdo_mysql php84-pdo_sqlite php84-pdo_pgsql; \
+	mkdir -p /tmp/sessions && chmod 777 /tmp/sessions; \
 	echo 'Ok'
-	
-ADD files /src/files
+
+RUN adduser -u 1000 -s /bin/sh -D user
+
+ADD files /
 RUN cd ~; \
-	cp -rf /src/files/etc/* /etc/; \
-	cp -rf /src/files/var/* /var/; \
-	rm -rf /src/files; \
-	chmod +x /root/run.sh; \
+	chmod +x /etc/run.sh; \
 	echo 'Ok'
+
+USER user
+CMD ["/etc/run.sh"]
